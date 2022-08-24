@@ -57,17 +57,16 @@ describe Venue do
   context 'Iteration 3 and iteration 4' do
     let(:venue) { Venue.new('Bluebird', 4) }
 
-    it 'should inform if the venue is over capacity'
+    it 'should inform if the venue is over capacity' do
       venue.add_patron('Mike')
       venue.add_patron('Megan')
       venue.add_patron('Bob')
-
       expect(venue.over_capacity?).to eq false
 
       venue.add_patron('James')
       venue.add_patron('Cat')
-      
       expect(venue.over_capacity?).to eq true
+    end
 
 
   end
