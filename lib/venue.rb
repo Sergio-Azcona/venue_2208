@@ -10,7 +10,7 @@ class Venue
     @patrons << person
   end
 
-
-
-
+  def yell_at_patrons
+    @patrons.map { |patron| patron.upcase }
+  end
 end
