@@ -29,7 +29,6 @@ describe Venue do
   end
 
   # Iteration 2
-
   describe '#add_patron' do
     it 'returns a list of patrons' do
       # skip
@@ -62,13 +61,32 @@ describe Venue do
       venue.add_patron('Megan')
       venue.add_patron('Bob')
       expect(venue.over_capacity?).to eq false
-
+  
       venue.add_patron('James')
+      # require 'pry';binding.pry
       venue.add_patron('Cat')
       expect(venue.over_capacity?).to eq true
     end
 
-
+    it "should remove last patrons to come in if the venue is over capacity" do
+      venue.add_patron('Mike')
+      venue.add_patron('Megan')
+      venue.add_patron('Bob')
+      expect(venue.over_capacity?).to eq false
+  
+      venue.add_patron('James')
+      venue.add_patron('Cat')
+      expect(venue.over_capacity?).to eq true
+      venue.kick_out
+      venue.add_patron('Kristen')
+      venue.add_patron('Erin')
+      venue.add_patron('Jamison')
+      venue.add_patron('Abdul')
+      expect(venue.over_capacity?).to eq true
+      # require 'pry';binding.pry
+      venue.kick_out
+      # require 'pry';binding.pry
+      expect(venue.over_capacity?).to eq false
+    end
   end
-
 end
